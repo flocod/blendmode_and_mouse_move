@@ -1,0 +1,118 @@
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blend mode</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="point"></div>
+    <div class="cursor"></div>
+    <span class="contain_cursor">
+      
+    </span>
+
+    <div class="container">
+      <div class="content">
+        <h1 class="link">町で最高の食べ物。</h1>
+        <a class="link" href="http://google.com"><p>お見逃しなく。</p></a>
+        <button class="link">
+          <span >今予約する</span>
+        </button>
+      </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"
+      integrity="sha512-kVlGhj2qFy+KBCFuvjBJTGUMxbdqJKs4yK2jh0e0VPhWUPiPC87bzm4THmaaIee3Oj7j6sDpTTgm2EPPiESqBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      var $cursor = $(".cursor");
+
+      function moveCursor(e) {
+        TweenLite.to($cursor, 0.3, {
+          css: {
+            left: e.pageX,
+            top: e.pageY,
+            opacity:1,
+          },
+        });
+      }
+
+      $(window).on("mousemove", moveCursor);
+
+
+      var $contain_cursor = $(".contain_cursor");
+
+      function moveContain_cursor(e) {
+        TweenLite.to($contain_cursor, 0.7, {
+          css: {
+            left: e.pageX,
+            top: e.pageY,
+          },
+        });
+      }
+      $(window).on("mousemove", moveContain_cursor);
+
+
+
+      var $point = $(".point");
+
+      function movePoint(e) {
+        TweenLite.to($point, 0.3, {
+          css: {
+            left: e.pageX,
+            top: e.pageY,
+          },
+        });
+      }
+
+      $(window).on("mousemove", movePoint);
+
+
+
+
+     $(window).on("mousemove",()=>{
+
+        if($(".link:hover").length != 0){
+        TweenLite.to($point, 0.3, {width:"150px", height:"150px"});
+        }else{
+            TweenLite.to($point, 0.3, {width:"20px", height:"20px"});
+        }
+
+
+     });
+
+
+
+    // smouth scroling
+
+//      $(window).on('mousewheel DOMMouseScroll', function(e) {
+//   var dir,
+//       amt = 100;
+
+//   e.preventDefault();
+//   if(e.type === 'mousewheel') {
+//     dir = e.originalEvent.wheelDelta > 0 ? '-=' : '+=';
+//   }
+//   else {
+//     dir = e.originalEvent.detail < 0 ? '-=' : '+=';
+//   }      
+
+//   $('html, body').stop().animate({
+//     scrollTop: dir + amt
+//   },500, 'linear');
+// })
+
+
+    </script>
+  </body>
+</html>
